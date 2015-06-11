@@ -1,7 +1,7 @@
 package jpa.orm;
 
 import java.util.List;
-
+import org.hibernate.ejb.criteria.ParameterContainer.Helper;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class App {
@@ -13,7 +13,10 @@ public class App {
 
         Person peter = new Person("XML", "HTML");
         Person nasta = new Person("Java", "SQL");
-
+        dao.testProfessor();
+        dao.testPerson();
+        dao.testEmployee();
+        
         dao.save(peter);
         dao.save(nasta);
 
@@ -22,5 +25,6 @@ public class App {
             System.out.println(person);
         }
         context.close();
+        Helper.checkData();
     }
 }
