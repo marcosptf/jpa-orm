@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.Table;
-//import javax.persistence.GeneratedValue;
+import javax.persistence.GeneratedValue;
 
 @Entity
 @Table(name="EMP")
@@ -19,7 +19,8 @@ public class Person {
     @Column(name="EMP_ID")
     private Long id;
     
-    @Basic
+//    @Basic
+    @Column(columnDefinition = "varchar(40)")
     private String name;
     private String surname;
     
