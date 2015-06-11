@@ -21,7 +21,7 @@ public class PersonDaoImpl {
         return em.createQuery("SELECT p FROM Person p", Person.class).getResultList();
     }
     
-    public void test(){
+    public void testProfessor(){
         Professor emp = new Professor();
         emp.setId(1);
         emp.setName("name");
@@ -29,6 +29,36 @@ public class PersonDaoImpl {
         emp.setPhoneNumber("1234567890");
         em.persist(emp);
     }
+    
+    public void testPerson(){
+        Person p1 = new Person("tom","smith");
+        p1.setId(1l);
+        p1.setPicture("javascripter".getBytes());
+        
+        Person p2 = new Person("jack","kook");
+        p2.setId(2l);
+        p2.setPicture("java2s.com".getBytes());
+        
+        save(p1);
+        save(p2);
+        listAll();
+        
+        Person emp = em.find(Person.class,1l);
+        if(null != emp){
+            em.remove(emp);
+        }
+        
+        listAll();
+    }
+    
+    private void listAll(){
+        List<Person> persons = getAll();
+        for(Person person : persons){
+            System.out.println(person);
+        }
+    }
+    
+    
     
 
 }
