@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
+import java.util.Date;
 
 @Transactional
 public class PersonDaoImpl {
@@ -49,6 +50,16 @@ public class PersonDaoImpl {
         }
         
         listAll();
+    }
+    
+    public void testEmployee(){
+        Employee emp = new Employee();
+        emp.setName("Tom");
+        em.persist(emp);
+        emp = em.find(Employee.class, emp.getId());
+        
+        Employee managetEmp = em.merge(emp);
+        managetEmp.setLastAccessTime(new Date());
     }
     
     private void listAll(){
