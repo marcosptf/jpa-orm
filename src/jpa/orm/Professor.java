@@ -23,12 +23,20 @@ import javax.persistence.Transient;
 public class Professor {
     
     @Id
+    @Column(name = "EMP_ID")
     private int id;
     private String name;
+    
     @Transient
     private String phoneNum;
+    
+    @Column(name = "SAL")
     private long salary;
     public static String LOCAL_AREA_CODE = "999";
+    
+    @Column(name = "COMM")
+    private String comments;
+    
     
     public int getId(){
         return id;
@@ -60,6 +68,14 @@ public class Professor {
     
     public void setPhoneNumber(String num){
         this.phoneNum = num;
+    }
+    
+    public String getComments(){
+        return comments;
+    }
+    
+    public void setComments(String comm){
+        this.comments = comm;
     }
     
     @Access(AccessType.PROPERTY)
