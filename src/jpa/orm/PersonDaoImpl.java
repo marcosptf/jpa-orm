@@ -1,6 +1,7 @@
 
 package jpa.orm;
 
+import java.util.Calendar;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -35,10 +36,16 @@ public class PersonDaoImpl {
         Person p1 = new Person("tom","smith");
         p1.setId(1l);
         p1.setPicture("javascripter".getBytes());
+        p1.setHourlyRate(22222222.324F);
+        p1.setStartDate((java.sql.Date) new Date(System.currentTimeMillis()));
+        p1.setDob(Calendar.getInstance().getTime());
         
         Person p2 = new Person("jack","kook");
         p2.setId(2l);
         p2.setPicture("java2s.com".getBytes());
+        p2.setHourlyRate(3333333.324F);
+        p2.setStartDate((java.sql.Date) new Date(System.currentTimeMillis()));
+        p2.setDob(Calendar.getInstance().getTime());
         
         save(p1);
         save(p2);
